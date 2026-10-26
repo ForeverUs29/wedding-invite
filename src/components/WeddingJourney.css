@@ -1,0 +1,1020 @@
+
+/* ==========================================
+   RIYA & HARDIK — ROYAL WEDDING JOURNEY
+   COMPLETE CLEAN CSS
+========================================== */
+
+/* GLOBAL CONTAINER */
+
+.journey-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100dvh;
+  z-index: 9999;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+.royal-journey {
+  --gold: #c8a15b;
+  --deep-gold: #a87c37;
+  --ink: #5b352b;
+
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100dvh;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+
+  box-sizing: border-box;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  color: var(--ink);
+  background: #fff7e9;
+  transition: background 0.5s ease;
+}
+
+.royal-journey,
+.royal-journey * {
+  box-sizing: border-box;
+}
+
+.royal-welcome,
+.royal-celebrations,
+.royal-wishes {
+  position: relative;
+  z-index: 1;
+}
+
+/* DECORATIVE BORDER */
+
+.royal-border {
+  position: fixed;
+  inset: 12px;
+  border: 1px solid rgba(190, 148, 75, 0.45);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.royal-border::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(190, 148, 75, 0.2);
+}
+
+/* COMMON SCREEN STYLING */
+
+.royal-screen {
+  width: 100%;
+  min-height: 100dvh;
+  height: auto;
+  margin: 0;
+  padding: 65px 22px 75px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  border-radius: 0;
+  box-shadow: none;
+  outline: none;
+
+  animation: royalAppear 0.75s ease both;
+}
+
+@keyframes royalAppear {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.royal-ornament {
+  color: var(--gold);
+  font-size: 27px;
+  letter-spacing: 8px;
+  margin-bottom: 15px;
+}
+
+.royal-eyebrow {
+  margin: 8px 0 16px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  line-height: 1.8;
+}
+
+.royal-heading {
+  margin: 8px 0 20px;
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(43px, 8vw, 72px);
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.royal-description {
+  max-width: 470px;
+  margin: 14px auto 22px;
+  font-size: clamp(18px, 3vw, 22px);
+  line-height: 1.6;
+}
+
+/* COMMON BUTTONS */
+
+.royal-button {
+  display: inline-block;
+  max-width: 100%;
+  margin: 18px auto 6px;
+  padding: 13px 26px;
+
+  border: 1px solid #d8b774;
+  border-radius: 2px;
+  background: linear-gradient(135deg, #d7b574, #a77a35);
+  color: #fffdf7;
+
+  font-family: inherit;
+  font-size: 19px;
+  font-weight: 600;
+  cursor: pointer;
+
+  box-shadow: 0 8px 22px rgba(80, 40, 20, 0.16);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.royal-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px rgba(80, 40, 20, 0.22);
+}
+
+.royal-text-button {
+  display: block;
+  margin: 15px auto 0;
+  padding: 10px 14px;
+
+  border: 0;
+  background: transparent;
+  color: inherit;
+
+  font-family: inherit;
+  font-size: 17px;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+/* ==========================================
+   1. WELCOME SCREEN
+========================================== */
+
+.royal-welcome {
+  position: relative;
+  justify-content: center;
+
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      rgba(255, 255, 255, 0.95),
+      rgba(255, 246, 226, 0.92) 55%,
+      rgba(226, 198, 151, 0.55) 100%
+    ),
+    #f9efdf;
+}
+
+.royal-welcome .royal-eyebrow {
+  color: #a87c37;
+}
+
+.royal-logo {
+  display: block;
+  width: min(85vw, 380px);
+  max-width: 100%;
+  max-height: 45dvh;
+  height: auto;
+  object-fit: contain;
+  margin: 12px auto;
+
+  filter: drop-shadow(
+    0 9px 18px rgba(125, 85, 40, 0.16)
+  );
+
+  animation: royalLogoReveal 1.2s ease both;
+}
+
+@keyframes royalLogoReveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ==========================================
+   2. MEET THE FAMILIES
+   KEEP INDEPENDENT SCROLLING
+========================================== */
+
+.royal-families {
+  --gold: #e6c382;
+
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+
+  display: block;
+  width: 100%;
+  height: 100dvh;
+  min-height: 0;
+  max-height: none;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+
+  padding: 65px 20px 100px;
+  text-align: center;
+
+  color: #fff0d9;
+
+  background: linear-gradient(
+    160deg,
+    #4a1424,
+    #741f34 52%,
+    #390f20
+  );
+}
+
+.royal-families .royal-heading,
+.royal-families .royal-person-name {
+  color: #f5d69a;
+}
+
+.royal-families .royal-eyebrow {
+  color: #f8e3c7;
+}
+
+.royal-families .royal-ornament,
+.royal-families .royal-family-divider {
+  color: #e6c382;
+}
+
+.royal-family-details {
+  display: block;
+  position: relative;
+
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  max-height: none;
+
+  margin: 20px auto;
+  padding: 25px 16px;
+
+  overflow: visible;
+
+  border: 1px solid rgba(231, 195, 130, 0.6);
+  border-radius: 0;
+  background: rgba(35, 8, 20, 0.24);
+
+  color: #fff0d9;
+
+  box-shadow: inset 0 0 35px
+    rgba(237, 196, 120, 0.05);
+}
+
+.royal-person-name {
+  margin: 8px 0 10px;
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(45px, 9vw, 65px);
+  font-weight: 400;
+}
+
+.royal-relation {
+  margin: 8px 0 3px;
+  color: #f8e3c7;
+  font-size: 16px;
+  font-style: italic;
+}
+
+.royal-family-name {
+  margin: 3px 0 12px;
+  color: #f8e3c7;
+  font-size: 20px;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.royal-family-divider {
+  margin: 20px auto;
+  font-size: 22px;
+}
+
+.royal-union-text {
+  margin: 10px 0;
+  font-size: 19px;
+  font-style: italic;
+  color: #f8e3c7;
+}
+
+.royal-families .royal-description {
+  color: #f8e3c7;
+}
+
+.royal-families .royal-button {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin: 20px auto;
+
+  background: linear-gradient(
+    135deg,
+    #f3d9a1,
+    #c69a53
+  );
+
+  color: #4a1424;
+}
+
+.royal-families .royal-text-button {
+  display: block;
+  width: fit-content;
+  margin: 20px auto;
+  color: #f8e3c7;
+}
+
+/* ==========================================
+   3. WEDDING CELEBRATIONS
+========================================== */
+
+
+/* WEDDING CELEBRATIONS — CUSTOM PNG BACKGROUND */
+
+.royal-celebrations {
+  background-image: url("/celebrations-background.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: #f7e8d3;
+
+  min-height: 100dvh;
+}
+
+
+.royal-celebrations .royal-heading {
+  color: #743a39;
+}
+
+.royal-celebrations .royal-eyebrow {
+  color: #a47b3e;
+}
+
+.royal-event-instruction {
+  margin: 2px 0 22px;
+  font-size: 15px;
+  font-style: italic;
+  color: #87643f;
+}
+
+/* FOUR EVENT TILES */
+
+.royal-events-grid {
+  width: min(100%, 760px);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin: 10px auto 20px;
+}
+
+.royal-event-tile {
+  min-height: 220px;
+  width: 100%;
+  padding: 26px 14px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  border: 1px solid rgba(173, 127, 60, 0.6);
+  border-radius: 3px;
+
+  font-family: inherit;
+  text-align: center;
+  cursor: pointer;
+
+  box-shadow: 0 10px 26px
+    rgba(65, 36, 24, 0.14);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.royal-event-tile:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 32px
+    rgba(65, 36, 24, 0.22);
+}
+
+.tile-haldi {
+  background: linear-gradient(
+    145deg,
+    #fff3b5,
+    #e9bd54
+  );
+  color: #76501b;
+}
+
+.tile-mehendi {
+  background: linear-gradient(
+    145deg,
+    #e3efcc,
+    #779b6d
+  );
+  color: #244e32;
+}
+
+.tile-wedding {
+  background: linear-gradient(
+    145deg,
+    #f2c5b8,
+    #9d3d47
+  );
+  color: #4f1626;
+}
+
+.tile-reception {
+  background: linear-gradient(
+    145deg,
+    #cbd8e8,
+    #47618d
+  );
+  color: #182d50;
+}
+
+.royal-tile-icon {
+  font-size: 35px;
+}
+
+.royal-tile-title {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(27px, 4vw, 39px);
+  line-height: 1.2;
+}
+
+.royal-tile-date {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.royal-tile-action {
+  margin-top: 4px;
+  font-size: 15px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* ==========================================
+   4. INDIVIDUAL EVENT INVITATIONS
+========================================== */
+
+.royal-event-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+
+  width: 100%;
+  height: 100dvh;
+  overflow-y: auto;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 18px;
+
+  animation: royalAppear 0.5s ease both;
+}
+
+.royal-event-detail {
+  position: relative;
+
+  width: min(100%, 580px);
+  min-height: min(740px, calc(100dvh - 80px));
+  margin: auto;
+  padding: 45px 26px 38px;
+
+  border: 2px solid currentColor;
+  outline: 1px solid rgba(255, 255, 255, 0.3);
+  outline-offset: -10px;
+
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 18px 50px
+    rgba(20, 15, 15, 0.18);
+}
+
+.royal-event-close {
+  position: absolute;
+  top: 15px;
+  right: 17px;
+
+  width: 36px;
+  height: 36px;
+
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+
+  font-size: 17px;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.royal-event-symbol {
+  font-size: clamp(48px, 10vw, 75px);
+  margin: 10px 0;
+  animation: royalFloat 3s ease-in-out infinite;
+}
+
+@keyframes royalFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.royal-event-heading {
+  margin: 10px 0;
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(48px, 10vw, 78px);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.royal-event-tagline {
+  margin: 12px 0;
+  font-size: 21px;
+  font-style: italic;
+}
+
+.royal-detail-divider {
+  margin: 10px auto;
+  font-size: 22px;
+}
+
+.royal-event-message {
+  max-width: 440px;
+  font-size: 19px;
+  line-height: 1.6;
+}
+
+.royal-event-information {
+  width: min(100%, 420px);
+  margin: 12px auto;
+  padding: 13px 8px;
+
+  border-top: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+}
+
+.royal-event-information p {
+  margin: 10px 0;
+  font-size: 19px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.royal-map-button {
+  display: inline-block;
+  margin: 15px auto 4px;
+  padding: 12px 22px;
+
+  border: 1px solid currentColor;
+  color: inherit;
+  background: rgba(255, 255, 255, 0.12);
+
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+
+  transition: transform 0.2s ease;
+}
+
+.royal-map-button:hover {
+  transform: translateY(-2px);
+}
+
+/* ==========================================
+   5. CUSTOM PNG EVENT INVITATIONS
+========================================== */
+
+/* OUTER SCREEN COLORS */
+
+.theme-haldi {
+  color: #71480f;
+  background: #f8df94;
+}
+
+.theme-mehendi {
+  color: #28513b;
+  background: #dce9d5;
+}
+
+.theme-wedding {
+  color: #792d3b;
+  background: #f3dcd7;
+}
+
+.theme-reception {
+  color: #243c61;
+  background: #dce5f1;
+}
+
+/* INDIVIDUAL PNG BACKGROUNDS */
+
+.theme-haldi .royal-event-detail {
+  background-image: url("/haldi-background.png");
+}
+
+.theme-mehendi .royal-event-detail {
+  background-image: url("/mehendi-background.png");
+}
+
+.theme-wedding .royal-event-detail {
+  background-image: url("/wedding-background.png");
+}
+
+.theme-reception .royal-event-detail {
+  background-image: url("/reception-background.png");
+}
+
+/* COMMON PNG INVITATION LAYOUT */
+
+.theme-haldi .royal-event-detail,
+.theme-mehendi .royal-event-detail,
+.theme-wedding .royal-event-detail,
+.theme-reception .royal-event-detail {
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  width: min(100%, 580px);
+  min-height: 740px;
+  height: auto;
+
+  padding: 105px 35px 45px;
+  justify-content: flex-start;
+
+  border: none;
+  outline: none;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+/* HIDE EXTRA WORDING AND SYMBOLS */
+
+.theme-haldi .royal-event-tagline,
+.theme-haldi .royal-event-message,
+.theme-haldi .royal-event-symbol,
+.theme-haldi .royal-detail-divider,
+.theme-mehendi .royal-event-tagline,
+.theme-mehendi .royal-event-message,
+.theme-mehendi .royal-event-symbol,
+.theme-mehendi .royal-detail-divider,
+.theme-wedding .royal-event-tagline,
+.theme-wedding .royal-event-message,
+.theme-wedding .royal-event-symbol,
+.theme-wedding .royal-detail-divider,
+.theme-reception .royal-event-tagline,
+.theme-reception .royal-event-message,
+.theme-reception .royal-event-symbol,
+.theme-reception .royal-detail-divider {
+  display: none;
+}
+
+/* EVENT HEADINGS */
+
+.theme-haldi .royal-event-heading,
+.theme-mehendi .royal-event-heading,
+.theme-wedding .royal-event-heading,
+.theme-reception .royal-event-heading {
+  margin: 0 0 25px;
+  font-size: clamp(46px, 9vw, 66px);
+  line-height: 1.15;
+  text-shadow: 0 1px 2px
+    rgba(255, 248, 225, 0.8);
+}
+
+.theme-haldi .royal-event-heading {
+  color: #82420e;
+}
+
+.theme-mehendi .royal-event-heading {
+  color: #31583b;
+}
+
+.theme-wedding .royal-event-heading {
+  color: #832f42;
+}
+
+.theme-reception .royal-event-heading {
+  color: #28466e;
+}
+
+/* DATE, TIME AND VENUE BOX */
+
+.theme-haldi .royal-event-information,
+.theme-mehendi .royal-event-information,
+.theme-wedding .royal-event-information,
+.theme-reception .royal-event-information {
+  width: 100%;
+  max-width: 390px;
+  margin: 25px auto 0;
+  padding: 18px 10px;
+
+  border: none;
+  background: rgba(255, 250, 230, 0.68);
+  border-radius: 12px;
+}
+
+/* EVENT DETAILS */
+
+.theme-haldi .royal-event-information p,
+.theme-mehendi .royal-event-information p,
+.theme-wedding .royal-event-information p,
+.theme-reception .royal-event-information p {
+  margin: 12px 0;
+  font-size: clamp(19px, 3.5vw, 23px);
+  font-weight: 700;
+  line-height: 1.4;
+
+  text-shadow: 0 1px 1px
+    rgba(255, 255, 255, 0.7);
+}
+
+.theme-haldi .royal-event-information p {
+  color: #683809;
+}
+
+.theme-mehendi .royal-event-information p {
+  color: #28513b;
+}
+
+.theme-wedding .royal-event-information p {
+  color: #792d3b;
+}
+
+.theme-reception .royal-event-information p {
+  color: #243c61;
+}
+
+/* LOCATION BUTTONS */
+
+.theme-haldi .royal-map-button,
+.theme-mehendi .royal-map-button,
+.theme-wedding .royal-map-button,
+.theme-reception .royal-map-button {
+  display: inline-block;
+  margin: 20px auto 10px;
+  padding: 13px 25px;
+
+  border: 2px solid rgba(255, 235, 185, 0.85);
+  border-radius: 6px;
+  color: #fffdf7;
+
+  font-size: 19px;
+  font-weight: 700;
+  text-decoration: none;
+
+  box-shadow: 0 5px 15px
+    rgba(40, 30, 20, 0.25);
+}
+
+.theme-haldi .royal-map-button {
+  background: #865018;
+}
+
+.theme-mehendi .royal-map-button {
+  background: #31583b;
+}
+
+.theme-wedding .royal-map-button {
+  background: #832f42;
+}
+
+.theme-reception .royal-map-button {
+  background: #28466e;
+}
+
+/* BACK TO EVENTS BUTTON */
+
+.theme-haldi .royal-text-button,
+.theme-mehendi .royal-text-button,
+.theme-wedding .royal-text-button,
+.theme-reception .royal-text-button {
+  color: inherit;
+  font-weight: 700;
+  text-shadow: 0 1px 2px
+    rgba(255, 255, 255, 0.8);
+}
+
+/* ==========================================
+   6. FINAL WISHES
+========================================== */
+
+.royal-wishes {
+  color: #713f4d;
+
+  background:
+    radial-gradient(
+      circle at top,
+      #fffdf6,
+      transparent 65%
+    ),
+    linear-gradient(
+      155deg,
+      #fbece9,
+      #e8cbd0,
+      #fff6ed
+    );
+}
+
+.royal-wishes .royal-heading {
+  color: #8d4c59;
+}
+
+.royal-final-names {
+  margin: 10px 0;
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(53px, 10vw, 85px);
+  font-weight: 400;
+  color: #984f61;
+}
+
+.royal-hashtag {
+  margin: 25px 0 10px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #9a5365;
+}
+
+.royal-final-date {
+  font-size: 16px;
+  letter-spacing: 5px;
+}
+
+/* ==========================================
+   7. RESPONSIVE MOBILE DESIGN
+========================================== */
+
+@media (max-width: 600px) {
+  .royal-border {
+    inset: 7px;
+  }
+
+  .royal-screen {
+    padding: 55px 18px 65px;
+  }
+
+  .royal-logo {
+    width: min(85vw, 300px);
+    max-height: 42dvh;
+  }
+
+  /* KEEP FAMILIES SCROLLABLE */
+
+  .royal-families {
+    padding: 65px 20px 100px;
+  }
+
+  .royal-family-details {
+    padding: 20px 12px;
+  }
+
+  /* EVENT TILES */
+
+  .royal-events-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .royal-event-tile {
+    min-height: 180px;
+    padding: 18px 8px;
+    gap: 9px;
+  }
+
+  .royal-tile-title {
+    font-size: clamp(24px, 6vw, 33px);
+  }
+
+  .royal-tile-date {
+    font-size: 12px;
+  }
+
+  .royal-tile-action {
+    font-size: 13px;
+  }
+
+  /* CUSTOM PNG INVITATIONS */
+
+  .theme-haldi .royal-event-detail,
+  .theme-mehendi .royal-event-detail,
+  .theme-wedding .royal-event-detail,
+  .theme-reception .royal-event-detail {
+    min-height: 700px;
+    padding: 100px 24px 40px;
+  }
+
+  .theme-haldi .royal-event-heading,
+  .theme-mehendi .royal-event-heading,
+  .theme-wedding .royal-event-heading,
+  .theme-reception .royal-event-heading {
+    font-size: 49px;
+  }
+
+  .theme-haldi .royal-event-information,
+  .theme-mehendi .royal-event-information,
+  .theme-wedding .royal-event-information,
+  .theme-reception .royal-event-information {
+    margin-top: 20px;
+    padding: 14px 8px;
+  }
+
+  .theme-haldi .royal-event-information p,
+  .theme-mehendi .royal-event-information p,
+  .theme-wedding .royal-event-information p,
+  .theme-reception .royal-event-information p {
+    font-size: 19px;
+  }
+}
+
+/* SMALL MOBILE SCREENS */
+
+@media (max-width: 360px) {
+  .royal-events-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .royal-event-tile {
+    min-height: 150px;
+  }
+
+  .royal-heading {
+    font-size: 43px;
+  }
+
+  .theme-haldi .royal-event-heading,
+  .theme-mehendi .royal-event-heading,
+  .theme-wedding .royal-event-heading,
+  .theme-reception .royal-event-heading {
+    font-size: 43px;
+  }
+}
+
+/* ==========================================
+   8. ACCESSIBILITY
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .royal-screen,
+  .royal-logo,
+  .royal-event-overlay,
+  .royal-event-symbol {
+    animation: none;
+  }
+
+  .royal-button,
+  .royal-event-tile {
+    transition: none;
+  }
+}

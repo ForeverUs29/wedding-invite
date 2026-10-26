@@ -162,39 +162,28 @@ body {
 
 /* FLAP */
 
+.
+/* Full front flap: clean, closed envelope */
 .envelope-flap {
   position: absolute;
-
   top: 0;
   left: 0;
-
   width: 100%;
-  height: 145px;
-
-  background:
-    linear-gradient(
-      145deg,
-      #f8eadb,
-      #e7ceb1
-    );
-
-  clip-path: polygon(
-    0 0,
-    100% 0,
-    50% 100%
+  height: 100%;
+  background: linear-gradient(
+    145deg,
+    #fff4df 0%,
+    #f8e8cd 55%,
+    #f3dfbd 100%
   );
-
-  border-top: 1px solid #c69b55;
-
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 62%, 0 100%);
+  border: none;
   transform-origin: top center;
-
-  transition:
-    transform 1s cubic-bezier(.77,0,.18,1);
-
+  transition: transform 1s cubic-bezier(.77, 0, .18, 1);
   z-index: 5;
-
   backface-visibility: hidden;
 }
+
 
 /* INVITATION CARD */
 
@@ -917,9 +906,7 @@ body {
   right: 9px;
 }
 
-.save-date-small {.save-date-small::first-letter {
-  color: #622f25;
-}
+.save-date-small {
   font-family: "Cormorant Garamond", serif;
   font-size: 13px;
   font-weight: 600;
@@ -1121,3 +1108,213 @@ body {
   color: #fffaf3;
   transform: translateY(-3px);
 }
+
+
+/* Scratch screen: fill the visible screen */
+.scratch-reveal-page {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+
+/* Keep the envelope centred and neatly proportioned */
+.envelope {
+  position: relative;
+  isolation: isolate;
+  filter: drop-shadow(0 16px 18px rgba(91, 57, 25, 0.16));
+}
+
+/* One consistent champagne-cream paper colour */
+.envelope-body {
+  background: linear-gradient(
+    145deg,
+    #fff4df 0%,
+    #f8e8cd 48%,
+    #f3dfbd 100%
+  ) !important;
+  border: 1px solid #c9a15e;
+  box-sizing: border-box;
+}
+
+/* Matching flap: the envelope should look fully closed */
+.envelope-flap {
+  background: linear-gradient(
+    145deg,
+    #fff4df 0%,
+    #f8e8cd 55%,
+    #f3dfbd 100%
+  ) !important;
+  border-color: #c9a15e;
+  backface-visibility: hidden;
+}
+
+/* Elegant gold-edged burgundy seal */
+.wax-seal {
+  position: relative;
+  z-index: 10;
+  background: radial-gradient(
+    circle at 32% 25%,
+    #8f3436 0%,
+    #681c26 58%,
+    #431018 100%
+  ) !important;
+  border: 2px solid #d6ad65 !important;
+  box-shadow:
+    inset 0 0 0 3px rgba(226, 190, 115, 0.38),
+    0 4px 10px rgba(65, 25, 15, 0.3);
+  color: #f7df9d;
+}
+
+/* Gold initials on the seal */
+.wax-seal span {
+  color: #f7df9d;
+}
+
+/* Keep the envelope's original opening animation */
+.envelope,
+.envelope-body,
+.envelope-flap,
+.invitation-card {
+  transform-style: preserve-3d;
+}
+
+
+
+/* FINAL ENVELOPE SHAPE FIX */
+.envelope {
+  position: relative !important;
+  width: 100%;
+  max-width: 380px;
+  height: 270px;
+  isolation: isolate;
+  filter: drop-shadow(0 18px 24px rgba(70, 35, 15, 0.2));
+}
+
+/* One uniform cream-coloured envelope base */
+.envelope-body {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 2 !important;
+  background: #f8e8cd !important;
+  border: 1px solid #c9a15e !important;
+  border-radius: 4px !important;
+  overflow: hidden !important;
+}
+
+/* Remove the unwanted lines at the bottom */
+.envelope-body::before,
+.envelope-body::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Triangular flap that closes toward the centre */
+
+
+.envelope-flap {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 145px !important;
+  z-index: 5 !important;
+
+  background: linear-gradient(
+    135deg,
+    #e5c58f 0%,
+    #f2ddb5 50%,
+    #d7b477 100%
+  ) !important;
+
+  clip-path: polygon(0 0, 100% 0, 50% 100%) !important;
+
+  border: none !important;
+  transform-origin: top center;
+  transition: transform 1s cubic-bezier(.77, 0, .18, 1);
+  backface-visibility: hidden;
+}
+
+/* Fine gold edges along the flap */
+.envelope-flap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    32deg,
+    transparent calc(50% - 0.6px),
+    #c9a15e 50%,
+    transparent calc(50% + 0.6px)
+  );
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Seal sits above the flap */
+.wax-seal {
+  z-index: 10 !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle at 32% 25%,
+    #8f3436,
+    #681c26 58%,
+    #431018
+  ) !important;
+  border: 2px solid #d6ad65 !important;
+  color: #f7df9d !important;
+}
+
+/* Preserve seal hover positioning */
+.wax-seal:hover {
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+
+/* Smooth luxury envelope opening */
+.luxury-envelope-page .envelope-flap {
+  transition: transform 1.2s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.luxury-envelope-page .invitation-card {
+  transition:
+    transform 1.3s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.8s ease;
+}
+
+.luxury-envelope-page .wax-seal {
+  transition:
+    opacity 0.45s ease,
+    transform 0.6s ease;
+}
+
+.luxury-envelope-page.is-open .wax-seal {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.65);
+  pointer-events: none;
+}
+
+/* Smooth transition for the next screen */
+.scratch-reveal-page {
+  animation: weddingScreenReveal 1.2s ease both;
+}
+
+@keyframes weddingScreenReveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+

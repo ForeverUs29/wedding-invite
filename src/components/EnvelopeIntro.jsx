@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from "react";
+import ScratchReveal from "./ScratchReveal";
+import WeddingJourney from "./WeddingJourney";
 function getTimeLeft() {
   const weddingDate = new Date("2026-11-30T20:00:00+05:30");
   const now = new Date();
@@ -30,6 +32,8 @@ function getTimeLeft() {
 
 function EnvelopeIntro() {
   const [opened, setOpened] = useState(false);
+  const [showInvitation, setShowInvitation] = useState(false);
+  const [showJourney, setShowJourney] = useState(false);
 const [timeLeft, setTimeLeft] = useState(getTimeLeft());
 const [musicPlaying, setMusicPlaying] = useState(false);
 const audioRef = useRef(null);
@@ -57,6 +61,28 @@ const toggleMusic = () => {
 };
   return (
     <div className={`luxury-envelope-page ${opened ? "is-open" : ""}`}>
+{/* Wedding music stays mounted on every screen */}
+<audio
+  ref={audioRef}
+  src="/wedding-song.mp3"
+  loop
+  preload="auto"
+/>
+{opened && (
+  <button
+    className={`music-button ${musicPlaying ? "playing" : ""}`}
+    onClick={toggleMusic}
+    aria-label={musicPlaying ? "Pause wedding music" : "Play wedding music"}
+    style={{
+      position: "fixed",
+      top: "20px",
+      right: "20px",
+      zIndex: 10001,
+    }}
+  >
+    {musicPlaying ? "❚❚" : "♪"}
+  </button>
+)}
 <div className="gold-particles">
   <span>✦</span>
   <span>✧</span>
@@ -68,52 +94,41 @@ const toggleMusic = () => {
       {/* Envelope */}
       <div className="envelope">
 
-        {/* Invitation card inside */}
-        <div className="invitation-card">
-          <div className="card-monogram">H + R</div>
+       {/* Invitation card inside - no visible text */}
+<div className="invitation-card"></div>
 
-          <p className="card-small">
-            THE WEDDING INVITATION
-          </p>
 
-          <h1>Riya & Hardik</h1>
-
-          <div className="card-line"></div>
-
-          <p>30 NOVEMBER 2026</p>
-          <p>PRAYAGRAJ</p>
-        </div>
-
-        {/* Envelope body */}
-        <div className="envelope-body">
-
-          <div className="envelope-monogram">
-            H + R
-          </div>
-
-          <p className="envelope-names">
-            Riya & Hardik
-          </p>
-
-          <p className="envelope-date">
-            30 • 11 • 2026
-          </p>
-
-        </div>
+   {/* Envelope body - clean and minimal */}
+<div className="envelope-body">
+</div>
 
         {/* Envelope flap */}
         <div className="envelope-flap"></div>
 
         {/* Wax seal */}
-        <button
-          className="wax-seal"
-          onClick={() => setOpened(true)}
-          aria-label="Open wedding invitation"
-        >
-          <span>H</span>
-          <span>+</span>
-          <span>R</span>
-        </button>
+<button
+  className="wax-seal"
+  onClick={() => {
+    const audio = audioRef.current;
+
+    if (audio) {
+      audio.volume = 0.6;
+
+      audio
+        .play()
+        .then(() => setMusicPlaying(true))
+        .catch(() => setMusicPlaying(false));
+    }
+
+    setOpened(true);
+    setShowInvitation(false);
+  }}
+  aria-label="Open wedding invitation"
+>
+  <span>R</span>
+  <span>+</span>
+  <span>H</span>
+</button>
 
       </div>
 
@@ -124,9 +139,18 @@ const toggleMusic = () => {
         </p>
       )}
      
+     {/* Scratch-to-reveal screen */}
+{opened && !showInvitation && (
+  <ScratchReveal
+    onContinue={() => {
+      setShowInvitation(true);
+      setShowJourney(true);
+    }}
+  />
+)}
 
       {/* Wedding page after opening */}
-      {opened && (
+        {showInvitation && !showJourney && (
   <div className="after-opening">
  <button
   className="top-button"
@@ -140,19 +164,7 @@ const toggleMusic = () => {
 >
   ↑
 </button>
-<audio
-  ref={audioRef}
-  src="/wedding-song.mp3"
-  loop
-/>
 
-<button
-  className={`music-button ${musicPlaying ? "playing" : ""}`}
-  onClick={toggleMusic}
-  aria-label={musicPlaying ? "Pause wedding music" : "Play wedding music"}
->
-  {musicPlaying ? "❚❚" : "♪"}
-</button>
 
     <p className="after-small">
       TOGETHER WITH THEIR FAMILIES
@@ -352,7 +364,11 @@ const toggleMusic = () => {
 
   </div>
 )}
-
+{showJourney && (
+  <div className="journey-overlay">
+    <WeddingJourney />
+  </div>
+)}
     </div>
   );
 }
