@@ -1,6 +1,7 @@
 
 import { useRef, useState } from "react";
 import "./WeddingJourney.css";
+import WeddingCountdown from "./WeddingCountdown";
 
 const events = [
   {
@@ -238,37 +239,60 @@ export default function WeddingJourney() {
       {/* FINAL WISHES */}
       {screen === "wishes" && (
         <section className="royal-screen royal-wishes">
-          <div className="royal-ornament">✧ ❦ ✧</div>
+          
+<div className="final-invitation-content">
 
-          <p className="royal-eyebrow">
-            WITH LOVE &amp; GRATITUDE
-          </p>
+  <div className="final-floral-symbol">
+    ❀ ✦ ❀
+  </div>
 
-          <h1 className="royal-heading">
-            A Forever Begins...
-          </h1>
+   <h1 className="final-blessing-heading">
+    Your presence, love and blessings will make our celebrations even more special.
+  </h1>
 
-          <h2 className="royal-final-names">
-            Riya &amp; Hardik
-          </h2>
+ 
 
-          <p className="royal-description">
-            Your presence, love and blessings will make
-            our celebrations even more special.
-          </p>
+  <div className="final-gold-divider">
+    ✦ ❀ ✦
+  </div>
 
-          <p className="royal-description">
-            We cannot wait to share these beautiful
-            moments with you!
-          </p>
+  <h2 className="final-save-title">
+    SAVE THE DATE
+  </h2>
 
-          <p className="royal-hashtag">
-            #dilHARIYA
-          </p>
+  <div className="final-save-date">
+    30 November 2026
+  </div>
 
-          <p className="royal-final-date">
-            30 · 11 · 2026
-          </p>
+  <p className="final-countdown-heading">
+    The Countdown to Forever Begins!
+  </p>
+
+  <WeddingCountdown />
+
+  <div className="final-gold-divider">
+    ✦ ❀ ✦
+  </div>
+
+ 
+  <div className="final-rsvp">
+    <span className="final-rsvp-title">
+      RSVP
+    </span>
+
+    <strong>Sanjay Yadav and Family</strong>
+
+    <a href="tel:9450408936">
+      9450408936
+    </a>
+  </div>
+
+  <p className="final-ending-symbol">
+    ❀
+  </p>
+
+</div>
+
 
           <button
             className="royal-button"
@@ -347,12 +371,18 @@ export default function WeddingJourney() {
               📍 View Location
             </a>
 
-            <button
-              className="royal-text-button"
-              onClick={closeEvent}
-            >
-              ← All Wedding Events
-            </button>
+            
+<button
+  type="button"
+  className="all-wedding-events-btn"
+  onClick={() => setSelectedEvent(null)}
+>
+  <span className="all-events-arrow" aria-hidden="true">
+    ←
+  </span>
+  <span>All Wedding Events</span>
+</button>
+
           </div>
         </div>
       )}
