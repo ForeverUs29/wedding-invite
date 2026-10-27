@@ -2701,3 +2701,67 @@
   color: #5b1e32;
 }
 
+
+/* ==========================================
+   FULL SCREEN BACKGROUNDS
+   ALL FOUR WEDDING EVENT INVITATIONS
+========================================== */
+
+/* HALDI NIGHT */
+
+.royal-event-overlay.theme-haldi {
+  background-image: url("/haldi-background.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: #f8df94;
+}
+
+/* MEHENDI & SANGEET */
+
+.royal-event-overlay.theme-mehendi {
+  background-image: url("/mehendi-background.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: #dce9d5;
+}
+
+/* THE WEDDING */
+
+.royal-event-overlay.theme-wedding {
+  background-image: url("/wedding-background.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: #f3dcd7;
+}
+
+/* WEDDING RECEPTION */
+
+.royal-event-overlay.theme-reception {
+  background-image: url("/reception-background.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: #dce5f1;
+}
+
+/* KEEP CONTENT READABLE */
+
+.royal-event-overlay .royal-event-detail {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+/* MOBILE RESPONSIVENESS */
+
+@media (max-width: 600px) {
+  .royal-event-overlay {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+}
+
+
