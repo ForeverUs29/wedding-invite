@@ -3,6 +3,19 @@ import { useRef, useState } from "react";
 import "./WeddingJourney.css";
 import WeddingCountdown from "./WeddingCountdown";
 
+// Bappa image used at the top of each invitation page
+function BappaBlessing() {
+  return (
+    <div className="royal-bappa-blessing">
+      <img
+        src="/bappa.png"
+        alt="Shree Ganesh"
+        className="royal-bappa-image"
+      />
+    </div>
+  );
+}
+
 const events = [
   {
     id: "haldi",
@@ -59,14 +72,14 @@ export default function WeddingJourney() {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const journeyRef = useRef(null);
 
- const goTo = (nextScreen) => {
-  setSelectedEvent(null);
-  setScreen(nextScreen);
+  const goTo = (nextScreen) => {
+    setSelectedEvent(null);
+    setScreen(nextScreen);
 
-  if (journeyRef.current) {
-    journeyRef.current.scrollTop = 0;
-  }
-};
+    if (journeyRef.current) {
+      journeyRef.current.scrollTop = 0;
+    }
+  };
 
   const openEvent = (event) => {
     setSelectedEvent(event);
@@ -78,25 +91,21 @@ export default function WeddingJourney() {
 
   return (
     <main
-  ref={journeyRef}
-  className={`royal-journey royal-${screen}`}
->
+      ref={journeyRef}
+      className={`royal-journey royal-${screen}`}
+    >
       {/* Decorative border */}
       <div className="royal-border" aria-hidden="true" />
 
-      {/* WELCOME — CUSTOM LOGO */}
+      {/* WELCOME SCREEN */}
       {screen === "welcome" && (
         <section className="royal-screen royal-welcome">
-          
-
-          
           <img
             src="/wedding-logo.png"
             alt="Riya and Hardik wedding logo — #dilHARIYA"
             className="royal-logo"
           />
 
-         
           <button
             className="royal-button"
             onClick={() => goTo("families")}
@@ -109,13 +118,11 @@ export default function WeddingJourney() {
       {/* MEET THE FAMILIES */}
       {screen === "families" && (
         <section className="royal-screen royal-families">
-          <div className="royal-ornament">✧ ❦ ✧</div>
+          <BappaBlessing />
 
           <p className="royal-eyebrow">
             WITH THE BLESSINGS &amp; LOVE OF OUR FAMILIES
           </p>
-
-          <h1 className="royal-heading">A Sacred Union</h1>
 
           <div className="royal-family-details">
             <h2 className="royal-person-name">Riya</h2>
@@ -123,11 +130,15 @@ export default function WeddingJourney() {
             <p className="royal-relation">
               Granddaughter of
             </p>
+
             <p className="royal-family-name">
-             Late Smt. Parvati Devi & Late Shri B.L. Yadav
+              Late Smt. Parvati Devi &amp; Late Shri B.L. Yadav
             </p>
 
-            <p className="royal-relation">Daughter of</p>
+            <p className="royal-relation">
+              Daughter of
+            </p>
+
             <p className="royal-family-name">
               Mrs. Meena Yadav and Mr. Sanjay Yadav
             </p>
@@ -140,23 +151,29 @@ export default function WeddingJourney() {
               is all set to tie the knot with
             </p>
 
-            <h2 className="royal-person-name">Hardik</h2>
+            <h2 className="royal-person-name">
+              Hardik
+            </h2>
 
             <p className="royal-relation">
               Grandson of
             </p>
+
             <p className="royal-family-name">
               Groom's Grandparents' Names
             </p>
 
-            <p className="royal-relation">Son of</p>
+            <p className="royal-relation">
+              Son of
+            </p>
+
             <p className="royal-family-name">
               Groom's Parents' Names
             </p>
           </div>
 
           <p className="royal-description">
-            Together with our families, we joyfully invite you
+            We joyfully invite you
             to celebrate this beautiful beginning.
           </p>
 
@@ -176,10 +193,10 @@ export default function WeddingJourney() {
         </section>
       )}
 
-      {/* ALL FOUR EVENTS ON ONE PAGE */}
+      {/* ALL FOUR CELEBRATIONS */}
       {screen === "celebrations" && (
         <section className="royal-screen royal-celebrations">
-          <div className="royal-ornament">✧ ∞ ✧</div>
+          <BappaBlessing />
 
           <p className="royal-eyebrow">
             #dilHARIYA
@@ -189,7 +206,6 @@ export default function WeddingJourney() {
             The Wedding Celebrations
           </h1>
 
-        
           <p className="royal-event-instruction">
             Tap any celebration to open its invitation
           </p>
@@ -209,9 +225,7 @@ export default function WeddingJourney() {
                   {event.title}
                 </span>
 
-                <span className="royal-tile-date">
-                  {event.date}
-                </span>
+              
 
                 <span className="royal-tile-action">
                   View Invitation →
@@ -239,60 +253,56 @@ export default function WeddingJourney() {
       {/* FINAL WISHES */}
       {screen === "wishes" && (
         <section className="royal-screen royal-wishes">
-          
-<div className="final-invitation-content">
+          <div className="final-invitation-content">
+            <BappaBlessing />
 
-  <div className="final-floral-symbol">
-    ❀ ✦ ❀
-  </div>
+            <h1 className="final-blessing-heading">
+              Your presence, love and blessings will make
+              our celebrations even more special.
+            </h1>
 
-   <h1 className="final-blessing-heading">
-    Your presence, love and blessings will make our celebrations even more special.
-  </h1>
+            <div className="final-gold-divider">
+              ✦ ❀ ✦
+            </div>
 
- 
+            <h2 className="final-save-title">
+              SAVE THE DATE
+            </h2>
 
-  <div className="final-gold-divider">
-    ✦ ❀ ✦
-  </div>
+            <div className="final-save-date">
+              30 November 2026
+            </div>
 
-  <h2 className="final-save-title">
-    SAVE THE DATE
-  </h2>
+            <p className="final-countdown-heading">
+              The Countdown to Forever Begins!
+            </p>
 
-  <div className="final-save-date">
-    30 November 2026
-  </div>
+            <WeddingCountdown />
 
-  <p className="final-countdown-heading">
-    The Countdown to Forever Begins!
-  </p>
+            <div className="final-gold-divider">
+              ✦ ❀ ✦
+            </div>
 
-  <WeddingCountdown />
+           
+<div className="final-rsvp">
+  <span className="final-rsvp-title">
+    INVITATION BY
+  </span>
 
-  <div className="final-gold-divider">
-    ✦ ❀ ✦
-  </div>
+  <strong>
+    Sanjay Yadav &amp; Meena Yadav
+  </strong>
 
- 
-  <div className="final-rsvp">
-    <span className="final-rsvp-title">
-      RSVP
-    </span>
-
-    <strong>Sanjay Yadav and Family</strong>
-
-    <a href="tel:9450408936">
-      9450408936
-    </a>
-  </div>
-
-  <p className="final-ending-symbol">
-    ❀
-  </p>
-
+  <a href="tel:9450408936">
+    9450408936
+  </a>
 </div>
 
+
+            <p className="final-ending-symbol">
+              ❀
+            </p>
+          </div>
 
           <button
             className="royal-button"
@@ -303,7 +313,7 @@ export default function WeddingJourney() {
         </section>
       )}
 
-      {/* INDIVIDUAL EVENT INVITATION */}
+      {/* INDIVIDUAL EVENT INVITATIONS */}
       {selectedEvent && (
         <div
           className={`royal-event-overlay theme-${selectedEvent.id}`}
@@ -320,9 +330,7 @@ export default function WeddingJourney() {
               ✕
             </button>
 
-            <div className="royal-ornament">
-              ✧ ❦ ✧
-            </div>
+            <BappaBlessing />
 
             <p className="royal-eyebrow">
               YOU ARE CORDIALLY INVITED
@@ -336,31 +344,29 @@ export default function WeddingJourney() {
               {selectedEvent.title}
             </h2>
 
-{selectedEvent.id !== "haldi" && (
-  <>
-    <p className="royal-event-tagline">
-      {selectedEvent.tagline}
-    </p>
+            {selectedEvent.id !== "haldi" && (
+              <>
+                <p className="royal-event-tagline">
+                  {selectedEvent.tagline}
+                </p>
 
-    <p className="royal-event-message">
-      {selectedEvent.message}
-    </p>
-  </>
-)}
-
-            
+                <p className="royal-event-message">
+                  {selectedEvent.invitation}
+                </p>
+              </>
+            )}
 
             <div className="royal-detail-divider">
               ✦
             </div>
 
            
+<div className="royal-event-information">
+  <p>📅 {selectedEvent.date}</p>
+  <p>🕰️ {selectedEvent.time}</p>
+  <p>📍 {selectedEvent.venue}</p>
+</div>
 
-            <div className="royal-event-information">
-              <p>❦ {selectedEvent.date}</p>
-              <p>◷ {selectedEvent.time}</p>
-              <p>⌖ {selectedEvent.venue}</p>
-            </div>
 
             <a
               className="royal-map-button"
@@ -371,18 +377,22 @@ export default function WeddingJourney() {
               📍 View Location
             </a>
 
-            
-<button
-  type="button"
-  className="all-wedding-events-btn"
-  onClick={() => setSelectedEvent(null)}
->
-  <span className="all-events-arrow" aria-hidden="true">
-    ←
-  </span>
-  <span>All Wedding Events</span>
-</button>
+            <button
+              type="button"
+              className="all-wedding-events-btn"
+              onClick={closeEvent}
+            >
+              <span
+                className="all-events-arrow"
+                aria-hidden="true"
+              >
+                ←
+              </span>
 
+              <span>
+                All Wedding Events
+              </span>
+            </button>
           </div>
         </div>
       )}
