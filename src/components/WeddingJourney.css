@@ -2667,3 +2667,37 @@
   transform: translateY(-2px);
 }
 
+
+/* BACK TO FAMILIES — SMALL LIGHT YELLOW BUTTON */
+
+.royal-celebrations .royal-text-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: fit-content;
+  max-width: 100%;
+
+  background: #fff0b8;
+  color: #5b1e32;
+
+  border: 2px solid #d4ad62;
+  border-radius: 30px;
+
+  padding: 7px 16px;
+  margin: 6px auto 0;
+
+  font-family: Georgia, serif;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.2;
+
+  text-decoration: none;
+  box-shadow: 0 3px 8px rgba(80, 50, 20, 0.15);
+}
+
+.royal-celebrations .royal-text-button:hover {
+  background: #ffe49a;
+  color: #5b1e32;
+}
+
