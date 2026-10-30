@@ -365,7 +365,7 @@ export default function WeddingJourney() {
 
            
 <div className="royal-event-information">
-  <p>📅 {selectedEvent.date}</p>
+  <p>🌸 {selectedEvent.date}</p>
   <p>🕰️ {selectedEvent.time}</p>
   <p>📍 {selectedEvent.venue}</p>
 </div>
