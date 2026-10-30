@@ -4,11 +4,11 @@ import "./WeddingJourney.css";
 import WeddingCountdown from "./WeddingCountdown";
 
 // Bappa image used at the top of each invitation page
-function BappaBlessing() {
+function BappaBlessing({ image = "/bappa.png" }) {
   return (
     <div className="royal-bappa-blessing">
       <img
-        src="/bappa.png"
+        src={image}
         alt="Shree Ganesh"
         className="royal-bappa-image"
       />
@@ -118,7 +118,7 @@ export default function WeddingJourney() {
       {/* MEET THE FAMILIES */}
       {screen === "families" && (
         <section className="royal-screen royal-families">
-          <BappaBlessing />
+          <BappaBlessing image="/bappa_cream.png" />
 
           <p className="royal-eyebrow">
             WITH THE BLESSINGS &amp; LOVE OF OUR FAMILIES
@@ -140,7 +140,7 @@ export default function WeddingJourney() {
             </p>
 
             <p className="royal-family-name">
-              Mrs. Meena Yadav and Mr. Sanjay Yadav
+              Mrs. Meena Yadav & Mr. Sanjay Yadav
             </p>
 
             <div className="royal-family-divider">
@@ -160,7 +160,7 @@ export default function WeddingJourney() {
             </p>
 
             <p className="royal-family-name">
-              Groom's Grandparents' Names
+             Late Smt. Sushila Shah & Late Shri Laxmichand Khimji Shah
             </p>
 
             <p className="royal-relation">
@@ -168,7 +168,8 @@ export default function WeddingJourney() {
             </p>
 
             <p className="royal-family-name">
-              Groom's Parents' Names
+              Mrs. Sandhya Shah & Mr. Dilip Shah 
+
             </p>
           </div>
 
@@ -297,6 +298,8 @@ export default function WeddingJourney() {
     9450408936
   </a>
 </div>
+
+
 
 
             <p className="final-ending-symbol">

@@ -318,7 +318,7 @@ const styles = {
     maxWidth: "430px",
     height: "clamp(130px, 25dvh, 220px)",
     margin: "0 auto",
-    border: "1px solid #c8a765",
+    border: "2px solid #a8323e",
     background: "#fffaf0",
     overflow: "hidden",
   },
@@ -340,7 +340,7 @@ const styles = {
     fontSize: "clamp(32px, 7vw, 49px)",
     fontWeight: 400,
     margin: "5px 0",
-    color: "#9a7138",
+    color: "#a8323e",
   },
 
   divider: {
